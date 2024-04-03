@@ -69,7 +69,7 @@ const data = [
             "novel",
             "Adventure"
         ],
-        hasMovieAdaptation:true,
+        hasMovieAdaptation:false,
         pages:658,
         translations:{spanish:""},
         reviews:{
@@ -111,6 +111,7 @@ const data = [
         },
     },
 ];
+
 function getBooks(){
     return data;
 }
@@ -118,7 +119,8 @@ function getBooks(){
 function getBook(id){
     return data.find((d) => d.id === id)
 }
-const book = getBook(2);
+/*
+const book = getBook(3);
 
 
 // const title = book.title;
@@ -159,14 +161,34 @@ console.log(book.translations.spanish);
 const tarnsla = book.translations.spanish || "Not translated";
 tarnsla
 
-console.log(book.reviews.librarythings.reviewsCount);
-const countwrong = book.reviews.librarythings.reviewsCount || "No data";
-countwrong;
-const count = book.reviews.librarythings.reviewsCount ?? "No data";
-count;
+// console.log(book.reviews.librarythings.reviewsCount);
+// const countwrong = book.reviews.librarythings.reviewsCount || "No data";
+// countwrong;
+// const count = book.reviews.librarythings.reviewsCount ?? "No data";
+// count;
 function getTotalReviews(b){
-    const goodReads = book.reviews.goodreads.reviewsCount;
-    const librarything  = book.reviews.librarythings.reviewsCount;
+    const goodReads = book.reviews?.goodreads?.reviewsCount;
+    const librarything  = book.reviews?.librarythings?.reviewsCount ?? 0;
+    librarything;
     return goodReads + librarything; 
 }
-console.log(getTotalReviews(book));
+console.log(getTotalReviews(book));*/
+
+const books =getBooks();
+const x= [1,2,3,4,5].map((el)=>el *2)
+console.log(x);
+
+const titles = books.map((book)=>book.title)
+titles
+
+const essentialData = books.map((book)=> ({
+        author: book.author,
+        title: book.title
+}));
+console.log(essentialData);
+const longBooks = books.filter((book)=>book.pages > 500).filter((book)=>book.hasMovieAdaptation);
+console.log(longBooks);
+
+const adventureBooks = books.filter((book)=>book.geners.includes("adventure")).map((book)=>book.title);
+
+adventureBooks
