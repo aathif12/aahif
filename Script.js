@@ -123,5 +123,50 @@ const book = getBook(2);
 
 // const title = book.title;
 // title;
-const{title,author} = book;
-console.log(title,author);
+const{title,author,geners,publicationDate,pages,hasMovieAdaptation,reviewsCount,librarythings} = book;
+console.log(title,author,geners,publicationDate,pages);
+// const primarygenre = geners[0];
+// const scendeorygenre = geners[1];
+const[primarygenre,scendeorygenre,...otherGenres] = geners;
+primarygenre;
+scendeorygenre;
+otherGenres;
+// function getYear(str){
+//     return str.split("-")[0];
+// }
+const getYear= (str) =>  str.split("-")[0];
+console.log(getYear(publicationDate));
+const newGenres = [ "epic fantasy",...geners];
+newGenres;
+const updatedBook = {...book,moviePublicatuionDate:"2001-12-19",pages:1256};
+updatedBook;
+const summary = `${title} is a Book ,is ${pages} author is ${author} and published in ${getYear(publicationDate)
+}.the Book has ${hasMovieAdaptation ? "": "not"} been adapted as a movie`;
+
+
+summary;
+
+const pagesrange = pages > 700 ? "over 700 " :"Less than thousnand";
+pagesrange;
+console.log(`The book has ${pagesrange} pages  the number is ${pages}`);
+console.log(true && "some string");
+console.log(false && "sp,e,");
+console.log(hasMovieAdaptation && "this book has a movie ");
+console.log(0 && "some string");
+console.log(true || "aathif");
+console.log(false || "aathif");
+console.log(book.translations.spanish);
+const tarnsla = book.translations.spanish || "Not translated";
+tarnsla
+
+console.log(book.reviews.librarythings.reviewsCount);
+const countwrong = book.reviews.librarythings.reviewsCount || "No data";
+countwrong;
+const count = book.reviews.librarythings.reviewsCount ?? "No data";
+count;
+function getTotalReviews(b){
+    const goodReads = book.reviews.goodreads.reviewsCount;
+    const librarything  = book.reviews.librarythings.reviewsCount;
+    return goodReads + librarything; 
+}
+console.log(getTotalReviews(book));
